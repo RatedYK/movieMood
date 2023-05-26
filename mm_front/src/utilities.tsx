@@ -72,7 +72,7 @@ export function checkForRuntime(prompt: string) {
 }
 
 export function checkForLanguage(prompt: string) {
-    const movieLanguages = ['english', 'japanese', 'korean', 'chinese'];
+    const movieLanguages = ['english', 'japanese', 'korean', 'chinese', 'french', 'spanish', 'indian', 'latin', 'italian'];
     const promptArray = prompt.toLowerCase().split(' ');
     for (const language of movieLanguages) {
         if (promptArray.includes(language)) {
