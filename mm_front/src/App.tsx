@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar"
 import Main from "./components/Main"
 import Landing from "./components/Landing"
 import Instruction from "./components/Instruction"
+import Footer from "./components/Footer"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/instruction" element={<Instruction />} />
         </Routes>
       </BrowserRouter>
+      <Footer name={"MovieMood"}/>
     </>
   )
 }

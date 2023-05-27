@@ -1,12 +1,12 @@
 .main--container {
-    height: 100vh;
+    height: 95vh;
     width: 100vw;
     background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 250px;
+    padding-bottom: 75px;
     color: white;
     gap: 3rem;
 }

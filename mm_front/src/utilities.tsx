@@ -1,6 +1,8 @@
 export function checkForGenre(prompt: string) {
     const allGenres = ['action', 'adventure', 'animation', 'comedy', 'crime', 'drama', 
-    'family', 'fantasy', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war'];
+    'family', 'fantasy', 'horror', 'musical', 'mystery', 'romance', 'sci-fi', 'thriller', 'war',
+    'western', 'biography', 'history', 'documentary', 'sport'];
+
 
     const lowerCasePrompt = prompt.toLowerCase();
     const inputtedGenres = [];
@@ -72,7 +74,10 @@ export function checkForRuntime(prompt: string) {
 }
 
 export function checkForLanguage(prompt: string) {
-    const movieLanguages = ['english', 'japanese', 'korean', 'chinese', 'french', 'spanish', 'indian', 'latin', 'italian'];
+    const movieLanguages = ['english', 'japanese', 'korean', 'chinese', 'french', 'spanish', 'indian', 'latin', 'italian',
+                            'german', 'russian', 'arabic', 'portuguese', 'swedish', 'dutch', 'polish', 'turkish', 'hebrew',
+                            'thai', 'greek', 'hungarian', 'czech', 'danish', 'finnish', 'norwegian', 'romanian', 'slovak',
+                            'cantonese', 'persian', 'vietnamese', 'hindi'];
     const promptArray = prompt.toLowerCase().split(' ');
     for (const language of movieLanguages) {
         if (promptArray.includes(language)) {

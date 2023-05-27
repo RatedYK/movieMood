@@ -13,7 +13,7 @@ const Instruction = () => {
                 <li>Hit "Enter" and see your search results.</li>
                 <li>It's <i>that</i> simple!</li>
             </ul>
-            <a href="/main" className="landing--btn start">Get Started</a>
+            <a href="/main" className="landing--btn start instruction--btn">Get Started</a>
         </div>
     </main>
   )

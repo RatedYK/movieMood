@@ -36,3 +36,8 @@
     gap: 1rem;
 }
 
+.instruction--btn {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    padding: clamp(1.5rem, 5vw, 2rem);
+}
+

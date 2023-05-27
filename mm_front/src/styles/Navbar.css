@@ -6,7 +6,7 @@
 }
 
 .nav--logo {
-    width: clamp(100px, 15vw, 125px);
+    width: clamp(75px, 15vw, 125px);
     height: clamp(50px, 15vw, 100px);
     margin-right: 20px;
     cursor: pointer;

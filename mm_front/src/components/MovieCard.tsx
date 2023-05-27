@@ -42,7 +42,7 @@ const MovieCard = ({ movieData, onClose }: MovieCardProps) => {
                 <span className="card-rated">{currentMovie.rated}</span>
             </div>
           </div>
-          <p className="card-genre">{currentMovie.genre}</p>
+          <p className="card-genre">{currentMovie.genres}</p>
           <p className="card-plot">{currentMovie.plot}</p>
         </article>
         <article className="card-data-container">
