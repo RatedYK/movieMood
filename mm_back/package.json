@@ -6,9 +6,9 @@
     "dev": "nodemon server.ts",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "seed": "npx ts-node seedMoviesScript.ts",
-    "build": "npm install && npm run migrate && npm run seed",
-    "start": "npx ts-node server.ts"
+    "seed": "node ./dist/seedMoviesScript.js",
+    "build": "npm install && tsc && npm run migrate && npm run seed",
+    "start": "node ./dist/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@types/express": "^4.17.17",
     "@types/knex": "^0.16.1",
+    "@types/node": "^20.2.5",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -25,7 +26,6 @@
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
-    "@types/node": "^20.2.3",
     "nodemon": "^2.0.22"
   }
 }

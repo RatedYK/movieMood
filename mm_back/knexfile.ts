@@ -28,7 +28,7 @@ const config: { [key: string]: Knex.Config } = {
       max: 20
     },
     migrations: {
-      directory: './db/migrations'
+      directory: './dist/db/migrations'
     }
   }
 
