@@ -6,8 +6,9 @@
     "dev": "nodemon server.ts",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "build": "npm install && npm run migrate && npx ts-node seedMoviesScript.ts",
-    "start": "npx ts-node server.js"
+    "seed": "npx ts-node seedMoviesScript.ts",
+    "build": "npm install && npm run migrate && npm run seed",
+    "start": "npx ts-node server.ts"
   },
   "author": "",
   "license": "ISC",
