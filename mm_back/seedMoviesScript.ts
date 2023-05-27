@@ -82,6 +82,7 @@ async function seedMovies(genres: string[], apikey: string | undefined) {
                   imdb_rating: movie.imdbRating,
                   imdb_id: movie.imdbID,
                   rated: movie.Rated,
+                  genres: movie.Genre,
                 })
                 .returning('id');
               // Insert genres, break apart string of genres
