@@ -64,7 +64,7 @@ const Main = () => {
   return (
     <main className='main--container'>
         <h1 className='main--title'>Movie Mood</h1>
-        <p>What kind of movie would you like to watch?</p>
+        <p className='main--question'>What kind of movie would you like to watch?</p>
         <form className='user--form' onSubmit={handleSubmit}>
             <input className='user--prompt' type='text' placeholder='e.g. action starring tom cruise' onChange={handleChange} value={userPrompt} />
             <button className='user--search-btn'>Search</button>

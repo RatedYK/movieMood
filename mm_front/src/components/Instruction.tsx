@@ -3,7 +3,7 @@ import "../styles/Instruction.css"
 const Instruction = () => {
   return (
     <main className='instruction--container'>
-        <h1 className='instruction--title'>How To Use</h1>
+        <h1 className='instruction--title'><u>How To Use</u></h1>
         <div className='instruction--info-container'>
             <ul className="instruction--list">
                 <li>Click on the <b>Get Started</b> button to start</li>

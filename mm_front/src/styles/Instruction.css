@@ -11,6 +11,10 @@
     padding-bottom: 10rem;
 }
 
+.instruction--container > * {
+    animation: fade-in 0.7s ease-in-out;
+}
+
 .instruction--title {
     font-size: clamp(3rem, 2vw, 5rem);
 }

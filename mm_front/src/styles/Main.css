@@ -14,6 +14,11 @@
 .main--title {
     font-size: clamp(2.5rem, 5vw, 8rem);
     user-select: none;
+    animation: fade-in 0.7s ease-in-out;
+}
+
+.main--question {
+    animation: fade-in 0.7s ease-in-out;
 }
 
 .user--prompt {
@@ -24,6 +29,7 @@
     border: none;
     padding: 5px;
     background-color: white;
+    animation: fade-in 0.7s ease-in-out;
 }
 
 .user--prompt:focus {
@@ -48,6 +54,7 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     font-weight: bold;
+    animation: fade-in 0.7s ease-in-out;
 }
 
 .user--search-btn:hover {
@@ -63,6 +70,7 @@
     flex-direction: column;
     gap: 1rem;
     padding: clamp(1.3rem, 2vw, 1.7rem);
+    animation: fade-in 0.7s ease-in-out;
 }
 
 .keywords--title {
