@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { getMovie } from './helperFunctions';
 const cors = require('cors');
-const allowedOrigins: string[] = ["http://localhost:3000"];
+const allowedOrigins: string[] = ["https://moviemood.onrender.com", "http://localhost:3000"];
 
 const express = require('express');
 const app = express();

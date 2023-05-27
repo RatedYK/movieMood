@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 const App = () => {
   return (
-    <div>
+    <>
       <Navbar />
       <BrowserRouter>
         <Routes>
@@ -15,7 +15,7 @@ const App = () => {
           <Route path="/instruction" element={<Instruction />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   )
 }
 
