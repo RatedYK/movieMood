@@ -31,3 +31,33 @@
     outline-color: purple;
     transform: scale(1.2);
 }
+
+.user--form {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.user--search-btn {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #D9248B;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.user--search-btn:hover {
+    transform: scale(1.1);
+    background-color: white;
+    color: black;
+}
+
+@media screen and (min-width: 768px) {
+    .user--search-btn {
+        display: none;
+    }
+}
