@@ -1,10 +1,10 @@
 /* Position and sizing of burger button */
 .bm-burger-button {
     position: fixed;
-    width: 36px;
-    height: 30px;
+    width: clamp(30px, 3vw, 50px);
+    height: clamp(30px, 3vw, 50px);
     right: 36px;
-    top: clamp(20px, 5%, 50px);
+    top: clamp(20px, 5%, 30px);
     z-index: 999;
   }
   
