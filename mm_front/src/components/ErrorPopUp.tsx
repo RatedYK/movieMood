@@ -9,9 +9,12 @@ type ErrorPopUpProps = {
 
 const ErrorPopUp = ({message, title, toggleError} : ErrorPopUpProps) => {
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             toggleError()
         }, 2000)
+        return () => {
+            clearTimeout(timeout)
+        }
     })
   return (
     <div className="error--container">

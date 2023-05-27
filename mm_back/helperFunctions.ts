@@ -121,13 +121,13 @@ async function filterByGenre(movies: any, genre : string[]) {
 }
 async function filterByDirector(movies : any, director:string) {
     return movies.filter((movie : any) => {
-        return movie.director.toLowerCase() === director;
+        return movie.director.toLowerCase().includes(director);
     });
 }
 
 async function filterByLanguage(movies : any, language:string) {
     return movies.filter((movie : any) => {
-        return movie.language.toLowerCase() === language;
+        return movie.language.toLowerCase().includes(language);
     });
 }
 
