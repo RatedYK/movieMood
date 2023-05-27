@@ -1,12 +1,21 @@
 .nav--container {
     display: flex;
-    padding: 30px 20px;
+    padding: 60px 20px;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: 100;
 }
 
 .nav--logo {
-    width: clamp(50px, 10%, 100px);
-    height: clamp(50px, 10%, 100px);
+    width: clamp(100px, 15vw, 125px);
+    height: clamp(50px, 15vw, 100px);
     margin-right: 20px;
+    cursor: pointer;
+    z-index: 999;
+    position: fixed;
+    top: 10px;
+    transition: all 1s ease-in-out;
+}
+
+.nav--logo:hover {
+    transform: scale(1.1) rotate3d(0, 1, 0, 180deg);
 }

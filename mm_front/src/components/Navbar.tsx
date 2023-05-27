@@ -5,7 +5,7 @@ const logo = require("../assets/icons/logo.png")
 const Navbar = () => {
   return (
     <nav className="nav--container">
-      <img className="nav--logo" src={logo} alt="Movie Mood"/>
+      <a className="nav--logo" href="/"><img className="nav--logo" src={logo} alt="Movie Mood"/></a>
       <HamburgerMenu />
     </nav>
   )

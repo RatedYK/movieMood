@@ -12,7 +12,7 @@ const Landing = () => {
         </article>
         <div className="landing--btn-container">
             <a href="/main" className="landing--btn start">Get Started</a>
-            <button className="landing--btn info">How does it work?</button>
+            <a href="/instruction" className="landing--btn info">How does it work?</a>
         </div>
     </main>
   )
