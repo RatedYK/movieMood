@@ -46,7 +46,7 @@ To run the Movie Mood application on your local machine, please follow the steps
    npm install
    ```
 
-3. Start the frontend development server by running:
+3. Start the frontend development server by running: 
    ```
    npm start
    ```
