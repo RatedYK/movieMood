@@ -33,7 +33,7 @@ const Main = () => {
         const body = filterPrompt(userPrompt);
       
         try {
-          const response = await fetch('https://moviemood.onrender.com/movies', {
+          const response = await fetch('https://moviemood-back.onrender.com/movies', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
