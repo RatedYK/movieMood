@@ -15,12 +15,16 @@ const MovieCard = ({ movieData, onClose }: MovieCardProps) => {
   const goToNextCard = () => {
     if (currentCardIndex < movieData.length - 1) {
       setCurrentCardIndex(currentCardIndex + 1);
+    } else {
+      setCurrentCardIndex(0);
     }
   };
 
   const goToPreviousCard = () => {
     if (currentCardIndex > 0) {
       setCurrentCardIndex(currentCardIndex - 1);
+    } else {
+      setCurrentCardIndex(movieData.length - 1);
     }
   };
 
@@ -53,15 +57,13 @@ const MovieCard = ({ movieData, onClose }: MovieCardProps) => {
         <div className="button-container">
             <button 
             className="card-btn" 
-            onClick={goToPreviousCard} 
-            disabled={currentCardIndex === 0}>
+            onClick={goToPreviousCard} >
             Previous
             </button>
 
             <button
             className="card-btn"
             onClick={goToNextCard}
-            disabled={currentCardIndex === movieData.length - 1}
             >
             Next
             </button>

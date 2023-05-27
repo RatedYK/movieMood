@@ -4,48 +4,64 @@ const knexConfig = require("./knexfile");
 const knex = Knex(knexConfig[process.env.NODE_ENV || "development"]);
 
 export async function getByGenre(genre : string[]) {
-    const reformedGenres = genre.map((genre : string) => {
-        return genre[0].toUpperCase() + genre.slice(1);
-    });
-    const allMoviesFitGenre: object[] = [];
-    await Promise.all(reformedGenres.map(async eachGenre => {
-        const movies = await knex('movies_genres')
-                        .select('*')
-                        .join('movies', 'movies_genres.movie_id', '=', 'movies.id')
-                        .join('genres', 'movies_genres.genre_id', '=', 'genres.id')
-                        .where('genres.genre', eachGenre);
-        allMoviesFitGenre.push(...movies);
-    }));
-    return allMoviesFitGenre;
+    try {
+        const reformedGenres = genre.map((genre : string) => {
+            return genre[0].toUpperCase() + genre.slice(1);
+        });
+        const allMoviesFitGenre: object[] = [];
+        await Promise.all(reformedGenres.map(async eachGenre => {
+            const movies = await knex('movies_genres')
+                            .select('*')
+                            .join('movies', 'movies_genres.movie_id', '=', 'movies.id')
+                            .join('genres', 'movies_genres.genre_id', '=', 'genres.id')
+                            .where('genres.genre', eachGenre);
+            allMoviesFitGenre.push(...movies);
+        }));
+        return allMoviesFitGenre;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 async function getByActor(actor : string) {
-    const reformedActor = actor.split(' ').map((word : string) => {
-        return word[0].toUpperCase() + word.slice(1);
-    }).join(' ');
-    console.log(reformedActor)
-    const movies = await knex('movies')
-                        .select('*')
-                        .where('actors', 'like', `%${reformedActor}%`);
-    return movies;
+    try {
+        const reformedActor = actor.split(' ').map((word : string) => {
+            return word[0].toUpperCase() + word.slice(1);
+        }).join(' ');
+        console.log(reformedActor)
+        const movies = await knex('movies')
+                            .select('*')
+                            .where('actors', 'like', `%${reformedActor}%`);
+        return movies;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 async function getByDirector(director : string) {
-    const reformedDirector = director.split(' ').map((word : string) => {
-        return word[0].toUpperCase() + word.slice(1);
-    }).join(' ');
-    const movies = await knex('movies')
-                        .select('*')
-                        .where('director', reformedDirector);
-    return movies;
+    try {
+        const reformedDirector = director.split(' ').map((word : string) => {
+            return word[0].toUpperCase() + word.slice(1);
+        }).join(' ');
+        const movies = await knex('movies')
+                            .select('*')
+                            .where('director', 'like', `%${reformedDirector}%`);
+        return movies;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 async function getByLanguage(language : string) {
-    const reformedLanguage = language.charAt(0).toUpperCase() + language.slice(1);
-    const movies = await knex('movies')
-                        .select('*')
-                        .where('language', 'like', `%${reformedLanguage}`);
-    return movies;
+    try {
+        const reformedLanguage = language.charAt(0).toUpperCase() + language.slice(1);
+        const movies = await knex('movies')
+                            .select('*')
+                            .where('language', 'like', `%${reformedLanguage}`);
+        return movies;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 async function getByRuntime(runtime : string) {
@@ -175,113 +191,132 @@ export async function getMovie(reqObj : reqObj) {
         actor, 
         language,} = reqObj;
     
-    let returnMovies : any = {message: 'No movies found'};
-    
-    // LANGUAGE ROUTE
-    if (language) {
-        returnMovies = await getByLanguage(language);
+    try {
+        let returnMovies
+        
+        // LANGUAGE ROUTE
+        if (language) {
+            returnMovies = await getByLanguage(language);
+            if (genre) {
+                // get by genre and then seperate
+                returnMovies = await getByGenre(genre);
+                returnMovies = await filterByLanguage(returnMovies, language);
+            }
+            if (director) {
+                returnMovies = await filterByDirector(returnMovies, director);
+            }
+            if (actor) {
+                returnMovies = await filterByActor(returnMovies, actor);
+            }
+            if (runtime) {
+                returnMovies = await filterByRuntime(returnMovies, runtime);
+            }
+            if (year) {
+                returnMovies = await filterByYear(returnMovies, year);
+            }
+            if (rated) {
+                returnMovies = await filterByRated(returnMovies, rated);
+            }
+            checkResults(returnMovies);
+            return returnMovies;
+        }
+        
+        // GENRE ROUTE
         if (genre) {
-            // get by genre and then seperate
             returnMovies = await getByGenre(genre);
-            returnMovies = await filterByLanguage(returnMovies, language);
+            if (director) {
+                returnMovies = await filterByDirector(returnMovies, director);
+            }
+            if (actor) {
+                returnMovies = await filterByActor(returnMovies, actor);
+            }
+            if (runtime) {
+                returnMovies = await filterByRuntime(returnMovies, runtime);
+            }
+            if (year) {
+                returnMovies = await filterByYear(returnMovies, year);
+            }
+            if (rated) {
+                returnMovies = await filterByRated(returnMovies, rated);
+            }
+            checkResults(returnMovies);
+            return returnMovies;
         }
-        if (director) {
-            returnMovies = await filterByDirector(returnMovies, director);
-        }
+        // ACTOR ROUTE
         if (actor) {
-            returnMovies = await filterByActor(returnMovies, actor);
+            returnMovies = await getByActor(actor);
+            if (director) {
+                returnMovies = await filterByDirector(returnMovies, director);
+            }
+            if (runtime) {
+                returnMovies = await filterByRuntime(returnMovies, runtime);
+            }
+            if (year) {
+                returnMovies = await filterByYear(returnMovies, year);
+            }
+            if (rated) {
+                returnMovies = await filterByRated(returnMovies, rated);
+            }
+            checkResults(returnMovies);
+            return returnMovies;
         }
-        if (runtime) {
-            returnMovies = await filterByRuntime(returnMovies, runtime);
-        }
-        if (year) {
-            returnMovies = await filterByYear(returnMovies, year);
-        }
-        if (rated) {
-            returnMovies = await filterByRated(returnMovies, rated);
-        }
-        return returnMovies;
-    }
     
-    // GENRE ROUTE
-    if (genre) {
-        returnMovies = await getByGenre(genre);
+        // DIRECTOR ROUTE
+    
         if (director) {
-            returnMovies = await filterByDirector(returnMovies, director);
+            returnMovies = await getByDirector(director);
+            if (runtime) {
+                returnMovies = await filterByRuntime(returnMovies, runtime);
+            }
+            if (year) {
+                returnMovies = await filterByYear(returnMovies, year);
+            }
+            if (rated) {
+                returnMovies = await filterByRated(returnMovies, rated);
+            }
+            checkResults(returnMovies);
+            return returnMovies;
         }
-        if (actor) {
-            returnMovies = await filterByActor(returnMovies, actor);
-        }
+    
+        // RUNTIME ROUTE
         if (runtime) {
-            returnMovies = await filterByRuntime(returnMovies, runtime);
+            returnMovies = await getByRuntime(runtime);
+            if (year) {
+                returnMovies = await filterByYear(returnMovies, year);
+            }
+            if (rated) {
+                returnMovies = await filterByRated(returnMovies, rated);
+            }
+            checkResults(returnMovies);
+            return returnMovies;
         }
+    
+        // YEAR ROUTE
         if (year) {
-            returnMovies = await filterByYear(returnMovies, year);
+            returnMovies = await getByYear(year);
+            if (rated) {
+                returnMovies = await filterByRated(returnMovies, rated);
+            }
+            checkResults(returnMovies);
+            return returnMovies;
         }
+    
         if (rated) {
-            returnMovies = await filterByRated(returnMovies, rated);
+            returnMovies = await getByRating(rated);
+            checkResults(returnMovies);
+            return returnMovies;
         }
-        return returnMovies;
-    }
-    // ACTOR ROUTE
-    if (actor) {
-        returnMovies = await getByActor(actor);
-        if (director) {
-            returnMovies = await filterByDirector(returnMovies, director);
-        }
-        if (runtime) {
-            returnMovies = await filterByRuntime(returnMovies, runtime);
-        }
-        if (year) {
-            returnMovies = await filterByYear(returnMovies, year);
-        }
-        if (rated) {
-            returnMovies = await filterByRated(returnMovies, rated);
-        }
-        return returnMovies;
-    }
+    
+        throw new Error('No movies found');
 
-    // DIRECTOR ROUTE
-
-    if (director) {
-        returnMovies = await getByDirector(director);
-        if (runtime) {
-            returnMovies = await filterByRuntime(returnMovies, runtime);
-        }
-        if (year) {
-            returnMovies = await filterByYear(returnMovies, year);
-        }
-        if (rated) {
-            returnMovies = await filterByRated(returnMovies, rated);
-        }
-        return returnMovies;
+    } catch (error) {
+        console.error(error);
     }
+}
 
-    // RUNTIME ROUTE
-    if (runtime) {
-        returnMovies = await getByRuntime(runtime);
-        if (year) {
-            returnMovies = await filterByYear(returnMovies, year);
-        }
-        if (rated) {
-            returnMovies = await filterByRated(returnMovies, rated);
-        }
-    }
+// ERROR HANDLING
 
-    // YEAR ROUTE
-    if (year) {
-        returnMovies = await getByYear(year);
-        if (rated) {
-            returnMovies = await filterByRated(returnMovies, rated);
-        }
-        if (rated) {
-            returnMovies = await filterByRated(returnMovies, rated);
-        }
-    }
-
-    if (rated) {
-        returnMovies = await getByRating(rated);
-    }
-
-    return returnMovies;
+function checkResults(results : any) {
+    if (results.length === 0) throw new Error('No movies found');
+    return results;
 }

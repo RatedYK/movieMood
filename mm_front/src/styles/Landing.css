@@ -14,10 +14,15 @@
     margin-top: 200px;
     padding: 0 2rem;
     gap: 1rem;
+    user-select: none;
 }
 
 .landing--catch {
-    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-size: clamp(2rem, 5vw, 4.5rem);
+}
+
+.landing--catch-second {
+    font-size: clamp(1.1em, 3vw, 2.5rem);
 }
 
 .landing--extra {
@@ -31,6 +36,9 @@
 }
 
 .landing--btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     font-size: clamp(0.8rem, 2vw, 1rem);
     color: white;
@@ -42,15 +50,20 @@
     background-color: #D9248B;
     transition: all 0.3s ease-in-out;
     text-decoration: none;
-    text-align: center;
 }
 
 .landing--btn.info {
-    background-color: gray;
+    background-color: #393035;
 }
 
 .landing--btn:hover {
     background-color: white;
     color: black;
     transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+    .landing--btn-container {
+        justify-content: center;
+    }
 }

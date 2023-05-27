@@ -7,7 +7,8 @@ const HamburgerMenu = () => {
   return (
     <Menu right noOverlay>
         <a id="home" className="menu-item" href="/">Home</a>
-        <a id="about" className="menu-item" href="/about">About</a>
+        <a id="howToUse" className="menu-item" href="/howToUse">How To Use</a>
+        <a id="main" className="menu-item" href="/main">Let's Try!</a>
     </Menu>
   )
 }

@@ -34,20 +34,15 @@ app.use(logger);
 
 // ROUTES
 app.post('/movies', async (req: Request, res: Response) => {
-    const { year, 
-            rated, 
-            runtime, 
-            genre, 
-            director, 
-            actor, 
-            language,} = req.body;
-    let result;
-
-    result = await getMovie(req.body);
-    // const allMoviesByDirector = await getByDirector(director);
-
-
-    res.status(200).json(result);
+    try {
+        const result = await getMovie(req.body);
+        if (result instanceof Error) {
+            res.status(400).json(result);
+        }
+        res.status(201).json(result);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 
