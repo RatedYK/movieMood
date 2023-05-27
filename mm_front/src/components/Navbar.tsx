@@ -1,9 +1,12 @@
 import "../styles/Navbar.css"
+import HamburgerMenu from "./HamburgerMenu"
+const logo = require("../assets/icons/logo.png")
 
 const Navbar = () => {
   return (
-    <nav>
-      <h1>movieMood</h1>
+    <nav className="nav--container">
+      <img className="nav--logo" src={logo} alt="Movie Mood"/>
+      <HamburgerMenu />
     </nav>
   )
 }

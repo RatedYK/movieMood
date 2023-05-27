@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "../styles/MovieCard.css";
 
+const imdbLogo = require("../assets/icons/imdb.png");
+
+
 type MovieCardProps = {
   movieData: any[]
   onClose: () => void
@@ -39,7 +42,7 @@ const MovieCard = ({ movieData, onClose }: MovieCardProps) => {
           <p className="card-plot">{currentMovie.plot}</p>
         </article>
         <article className="card-data-container">
-          <p>{currentMovie.imdb_rating}</p>
+          <p className="card-rating"><img className="imdb-logo" src={imdbLogo} alt="imdb rating"/>{currentMovie.imdb_rating}</p>
           <p>{currentMovie.language}</p>
           <p>{currentMovie.runtime}</p>
           <p>{currentMovie.year}</p>

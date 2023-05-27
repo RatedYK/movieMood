@@ -1,0 +1,12 @@
+.nav--container {
+    display: flex;
+    padding: 30px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.nav--logo {
+    width: clamp(50px, 10%, 100px);
+    height: clamp(50px, 10%, 100px);
+    margin-right: 20px;
+}

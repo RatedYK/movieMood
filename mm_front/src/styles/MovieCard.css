@@ -4,8 +4,9 @@
     min-width: 400px;
     max-width: 650px;
     min-height: 650px;
+    max-height: 750px;
     grid-template-columns: clamp(200px, 50%, 300px) clamp(200px, 50%, 300px);
-    grid-template-rows: 30px 1.3fr 0.7fr 50px;
+    grid-template-rows: 10px 1.1fr 0.7fr 70px;
     grid-template-areas: "resultCounter resultCounter"
                          "poster poster"
                          "info data"
@@ -17,6 +18,7 @@
     box-shadow: 0 0 10px black;
     border-radius: 20px;
     background-color: white;
+    overflow: auto;
 }
 
 .card-result {
@@ -28,7 +30,7 @@
 .card-img {
     grid-area: poster;
     justify-self: center;
-    width: clamp(200px, 50%, 300px);
+    width: clamp(150px, 50%, 275px);
     height: auto;
     border-radius: 20px;
     margin: 1rem 0;
@@ -55,6 +57,7 @@
 
 .card-plot {
     margin-top: 1rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 .card-info-container {
@@ -69,10 +72,21 @@
     grid-area: data;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: clamp(0.3rem, 1vw, 0.6rem);
     text-align: right;
     padding-right: 2rem;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+}
+
+.card-rating {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.imdb-logo {
+    width: clamp(27px, 10%, 35px);
 }
 
 .button-container {
@@ -80,11 +94,11 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin: 2rem;
+    margin: 1rem;
 }
 
 .card-btn {
-    padding: clamp(0.5rem, 1vw, 1rem);
+    padding: clamp(0.8rem, 1vw, 2rem);
     border-radius: 10px;
     border: none;
     font-size: clamp(0.8rem, 2vw, 1rem);

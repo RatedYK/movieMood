@@ -1,0 +1,56 @@
+.landing--container {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 5vw, 5rem);
+}
+
+.landing--info-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    padding: 0 2rem;
+    gap: 1rem;
+}
+
+.landing--catch {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+.landing--extra {
+    font-size: clamp(0.8rem, 2vw, 1.3rem);
+}
+
+.landing--btn-container {
+    display: flex;
+    padding: 0 2rem;
+    gap: 2rem;
+}
+
+.landing--btn {
+    cursor: pointer;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    color: white;
+    font-weight: bold;
+    padding: 1.5rem;
+    width: clamp(100px, 30%, 200px);
+    border-radius: 20px;
+    border: none;
+    background-color: #D9248B;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    text-align: center;
+}
+
+.landing--btn.info {
+    background-color: gray;
+}
+
+.landing--btn:hover {
+    background-color: white;
+    color: black;
+    transform: scale(1.1);
+}
