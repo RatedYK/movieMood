@@ -21,6 +21,7 @@
     border: grey 1px solid;
     overflow: auto;
     color: black;
+    z-index: 999;
 }
 
 .card-result {

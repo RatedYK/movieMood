@@ -10,7 +10,7 @@
     height: clamp(50px, 15vw, 100px);
     margin-right: 20px;
     cursor: pointer;
-    z-index: 999;
+    z-index: 888;
     position: fixed;
     top: 10px;
     transition: all 1s ease-in-out;
