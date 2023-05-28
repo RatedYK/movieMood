@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios');
 
 // RANDOM POST REQUEST TO KEEP SERVER UP
 const pingServer = async () => {
