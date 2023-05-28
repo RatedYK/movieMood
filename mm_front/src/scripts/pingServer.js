@@ -1,9 +1,7 @@
 const axios = require('axios');
-
 // RANDOM POST REQUEST TO KEEP SERVER UP
-export const pingServer = async () => {
+const pingServer = async () => {
   try {
-    await axios.get('https://moviemood-back.onrender.com/');
     await axios.post('https://moviemood-back.onrender.com/movies');
     console.log('Ping successful');
   } catch (error) {
@@ -11,3 +9,7 @@ export const pingServer = async () => {
   }
   setTimeout(pingServer, 300000);
 };
+
+pingServer();
+
+module.exports = pingServer;

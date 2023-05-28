@@ -5,11 +5,11 @@ import Landing from "./components/Landing"
 import Instruction from "./components/Instruction"
 import Footer from "./components/Footer"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { pingServer } from "./scripts/pingServer"
+const pingServer = require("./scripts/pingServer.js");
 
 const App = () => {
 
-  // Ping the server on initial load
+  // Ping the server on initial load to wake it up
   useEffect(() => {
     (async () => {
       await pingServer();
