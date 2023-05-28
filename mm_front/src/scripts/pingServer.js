@@ -9,6 +9,3 @@ export const pingServer = async () => {
     console.error('Ping failed', error.message);
   }
 };
-
-// Schedule the subsequent pings every 10 minutes (600,000 milliseconds)
-setInterval(pingServer, 600000);

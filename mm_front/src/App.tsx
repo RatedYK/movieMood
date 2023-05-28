@@ -8,11 +8,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { pingServer } from "./scripts/pingServer"
 
 const App = () => {
-  
+
   // Ping the server on initial load
   useEffect(() => {
-    const pingInterval = setInterval(pingServer, 600000);
-    return () => clearInterval(pingInterval);
+    pingServer();
+    const pingInterval = setTimeout(pingServer, 600000);
+    return () => clearTimeout(pingInterval);
   }, []);
 
   return (
