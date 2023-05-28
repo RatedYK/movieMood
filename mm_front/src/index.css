@@ -11,6 +11,7 @@ body {
   background-color: black;
   background-image: url("./assets/images/background2.jpg");
   background-size: 2000px;
+  animation: slight-fade-in 1s ease-in-out;
 }
 
 
@@ -21,4 +22,13 @@ body {
   'GRAD' 0,
   'opsz' 48;
   font-size: 1.3rem
+}
+
+@keyframes slight-fade-in {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
 }
