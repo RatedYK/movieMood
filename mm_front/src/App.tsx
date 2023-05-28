@@ -12,8 +12,6 @@ const App = () => {
   // Ping the server on initial load
   useEffect(() => {
     pingServer();
-    const pingInterval = setTimeout(pingServer, 600000);
-    return () => clearTimeout(pingInterval);
   }, []);
 
   return (

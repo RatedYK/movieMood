@@ -8,4 +8,5 @@ export const pingServer = async () => {
   } catch (error) {
     console.error('Ping failed', error.message);
   }
+  setTimeout(pingServer, 300000);
 };
