@@ -11,7 +11,9 @@ const App = () => {
 
   // Ping the server on initial load
   useEffect(() => {
-    pingServer();
+    (async () => {
+      await pingServer();
+    })();
   }, []);
 
   return (
