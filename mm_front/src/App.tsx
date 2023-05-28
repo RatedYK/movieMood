@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import Navbar from "./components/Navbar"
 import Main from "./components/Main"
 import Landing from "./components/Landing"
@@ -6,10 +7,13 @@ import Footer from "./components/Footer"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { pingServer } from "./scripts/pingServer"
 
-// Schedule the subsequent pings every 10 minutes (600,000 milliseconds)
-setInterval(pingServer, 600000);
-
 const App = () => {
+  
+  // Ping the server on initial load
+  useEffect(() => {
+    const pingInterval = setInterval(pingServer, 600000);
+    return () => clearInterval(pingInterval);
+  }, []);
 
   return (
     <>

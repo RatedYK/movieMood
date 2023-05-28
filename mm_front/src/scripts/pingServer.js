@@ -10,8 +10,5 @@ export const pingServer = async () => {
   }
 };
 
-// Call the pingServer function initially
-pingServer();
-
 // Schedule the subsequent pings every 10 minutes (600,000 milliseconds)
 setInterval(pingServer, 600000);
