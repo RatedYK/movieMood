@@ -4,8 +4,13 @@ import Landing from "./components/Landing"
 import Instruction from "./components/Instruction"
 import Footer from "./components/Footer"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { pingServer } from "../scripts/pingServer"
+
+// Schedule the subsequent pings every 10 minutes (600,000 milliseconds)
+setInterval(pingServer, 600000);
 
 const App = () => {
+
   return (
     <>
       <Navbar />

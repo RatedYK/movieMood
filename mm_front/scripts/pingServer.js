@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 // RANDOM POST REQUEST TO KEEP SERVER UP
-const pingServer = async () => {
+export const pingServer = async () => {
   try {
     await axios.post('https://moviemood-back.onrender.com/movies');
     console.log('Ping successful');
