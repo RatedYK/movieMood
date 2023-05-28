@@ -5,7 +5,7 @@ import Landing from "./components/Landing"
 import Instruction from "./components/Instruction"
 import Footer from "./components/Footer"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-const pingServer = require("./scripts/pingServer.js");
+import { pingServer } from "./scripts/pingServer.js"
 
 const App = () => {
 
