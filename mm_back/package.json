@@ -6,6 +6,7 @@
     "dev": "nodemon server.ts",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
+    "devSeed": "ts-node ./src/seedMoviesScript.ts",
     "seed": "node ./dist/seedMoviesScript.js",
     "build": "npm install && tsc && npm run migrate && npm run seed",
     "start": "node ./dist/server.js"

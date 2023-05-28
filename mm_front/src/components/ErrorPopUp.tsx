@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import "../styles/ErrorPopUp.css"
+import "../styles/PopUps.css"
 
 type ErrorPopUpProps = {
     message: string

@@ -3,6 +3,7 @@ import { filterPrompt } from '../utilities'
 import MovieCard from './MovieCard'
 import ErrorPopUp from './ErrorPopUp'
 import Keywords from './Keywords'
+import SearchPopUp from './SearchPopUp'
 import '../styles/Main.css'
 
 
@@ -11,6 +12,7 @@ const Main = () => {
     const [userPrompt, setUserPrompt] = useState('')
     const [movieData, setMovieData] = useState<any>([])
     const [showMovieCards, setShowMovieCards] = useState<boolean>(false)
+    const [showSearch, setShowSearch] = useState<boolean>(false)
     const [showError, setShowError] = useState<boolean>(false)
 
 
@@ -32,8 +34,9 @@ const Main = () => {
         e.preventDefault();
       
         const body = filterPrompt(userPrompt);
-      
+
         try {
+          setShowSearch(true);
           const response = await fetch('https://moviemood-back.onrender.com/movies', {
             method: 'POST',
             headers: {
@@ -54,6 +57,7 @@ const Main = () => {
             console.error(error);
             toggleError();
         }
+        setShowSearch(false);
         setUserPrompt('');
       }
       
@@ -72,6 +76,7 @@ const Main = () => {
         </form>
         <Keywords />
         {showMovieCards && <MovieCard movieData={movieData} onClose={closeCards} />}
+        {showSearch && <SearchPopUp title="Searching" message="Refresh the page and try again if over 10 seconds." />}
         {showError && <ErrorPopUp toggleError={toggleError} title='No results found!' message='Try limiting your search and using more keywords, take a look at the "How To Use" to find out more.'/>}
     </main>
   )
