@@ -11,9 +11,11 @@ const App = () => {
 
   // Ping the server on initial load to wake it up
   useEffect(() => {
-    (async () => {
-      await pingServer();
-    })();
+    pingServer();
+    const pingInterval = setInterval(pingServer, 300000);
+    return () => {
+      clearInterval(pingInterval);
+    }
   }, []);
 
   return (
